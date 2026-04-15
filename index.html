@@ -148,21 +148,45 @@ nav {
 }
 .btn-ghost:hover { border-color: var(--cyan); color: var(--cyan); }
 
-/* ── HERO WHEEL (right panel) ── */
+/* ── HERO RIGHT — widget panel ── */
 .hero-right {
   height: 100%; min-height: 520px;
-  background: #1f1f1f;
+  background: #1a1a1a;
   display: flex; align-items: center; justify-content: center;
   position: relative; overflow: hidden;
+  padding: 2.5rem 2rem;
+  border-left: 1px solid rgba(41,184,212,0.15);
 }
 .hero-right::before {
   content: ''; position: absolute; inset: 0;
-  background: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(41,184,212,0.06) 0%, transparent 70%);
+  background: radial-gradient(ellipse 80% 80% at 50% 50%, rgba(41,184,212,0.05) 0%, transparent 70%);
+  pointer-events: none;
 }
-
-/* Static alloy wheel SVG */
-.wheel-wrap { position: relative; z-index: 2; width: clamp(300px, 38vw, 480px); height: clamp(300px, 38vw, 480px); }
-.wheel-wrap svg { width: 100%; height: 100%; filter: drop-shadow(0 0 40px rgba(41,184,212,0.12)); }
+.hero-widget-wrap {
+  position: relative; z-index: 2;
+  width: 100%; max-width: 480px;
+}
+.hero-widget-label {
+  font-family: var(--fd); font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase; color: var(--cyan);
+  margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;
+}
+.hero-widget-label::before { content: ''; width: 1rem; height: 2px; background: var(--cyan); }
+.hero-widget-box {
+  background: #fff;
+  border-top: 3px solid var(--cyan);
+  overflow: hidden;
+}
+/* Theme the widget internals to match site */
+#tw-widget .tw-wrap { background: transparent !important; border: none !important; padding: 0 !important; box-shadow: none !important; }
+#tw-widget .tw-title, #tw-widget .tw-title * { color: #29b8d4 !important; }
+#tw-widget .tw-input { border-color: rgba(0,0,0,0.15) !important; border-radius: 2px !important; }
+#tw-widget .tw-input:focus { border-color: #29b8d4 !important; outline: none !important; }
+#tw-widget .tw-btn { background: #29b8d4 !important; color: #fff !important; font-weight: 700 !important; border-radius: 2px !important; }
+#tw-widget .tw-btn:hover { background: #1e92a8 !important; }
+#tw-widget .tw-tyre-label { color: #29b8d4 !important; }
+#tw-widget .tw-enquiry-btn { background: #29b8d4 !important; color: #fff !important; border-radius: 2px !important; }
+#tw-widget .tw-powered a { color: #29b8d4 !important; }
 
 /* ── STATS BAR ── */
 .stats-bar {
@@ -410,104 +434,14 @@ footer { background: var(--topbar); border-top: 2px solid rgba(41,184,212,0.3); 
       </div>
     </div>
     <div class="hero-right">
-      <!-- Static white-lettered alloy wheel illustration -->
-      <div class="wheel-wrap">
-        <svg viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg" fill="none">
-          <!-- Outer tyre -->
-          <circle cx="240" cy="240" r="232" fill="#111" stroke="#2a2a2a" stroke-width="2"/>
-          <!-- Tyre inner edge -->
-          <circle cx="240" cy="240" r="208" fill="#1a1a1a"/>
-          <!-- Rim outer barrel -->
-          <circle cx="240" cy="240" r="202" fill="url(#rimGrad)" stroke="#555" stroke-width="1"/>
-          <!-- Rim lip highlight ring -->
-          <circle cx="240" cy="240" r="196" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="3"/>
-          <!-- Rim face base -->
-          <circle cx="240" cy="240" r="188" fill="#d8d8d8"/>
-          <!-- Rim face shadow gradient overlay -->
-          <circle cx="240" cy="240" r="188" fill="url(#faceGrad)"/>
-
-          <!-- 10 spokes — light machined alloy style -->
-          <!-- Each spoke is a tapered path from centre outward, white/silver -->
-          <g fill="url(#spokeGrad)" stroke="rgba(255,255,255,0.1)" stroke-width="0.5">
-            <!-- Spoke 1: top -->
-            <path d="M232 100 L230 72 L250 72 L248 100 Q244 104 240 104 Q236 104 232 100Z"/>
-            <!-- Spoke 2: upper right -->
-            <path d="M298 136 L320 114 L334 128 L312 150 Q307 152 303 149 Q299 146 298 136Z" transform="rotate(36 240 240)"/>
-            <!-- Spoke 3: right -->
-            <path d="M298 136 L320 114 L334 128 L312 150 Q307 152 303 149 Q299 146 298 136Z" transform="rotate(72 240 240)"/>
-            <!-- Spoke 4: lower right -->
-            <path d="M298 136 L320 114 L334 128 L312 150 Q307 152 303 149 Q299 146 298 136Z" transform="rotate(108 240 240)"/>
-            <!-- Spoke 5: lower left -->
-            <path d="M298 136 L320 114 L334 128 L312 150 Q307 152 303 149 Q299 146 298 136Z" transform="rotate(144 240 240)"/>
-            <!-- Spoke 6: bottom -->
-            <path d="M298 136 L320 114 L334 128 L312 150 Q307 152 303 149 Q299 146 298 136Z" transform="rotate(180 240 240)"/>
-            <!-- Spoke 7 -->
-            <path d="M298 136 L320 114 L334 128 L312 150 Q307 152 303 149 Q299 146 298 136Z" transform="rotate(216 240 240)"/>
-            <!-- Spoke 8 -->
-            <path d="M298 136 L320 114 L334 128 L312 150 Q307 152 303 149 Q299 146 298 136Z" transform="rotate(252 240 240)"/>
-            <!-- Spoke 9 -->
-            <path d="M298 136 L320 114 L334 128 L312 150 Q307 152 303 149 Q299 146 298 136Z" transform="rotate(288 240 240)"/>
-            <!-- Spoke 10 -->
-            <path d="M298 136 L320 114 L334 128 L312 150 Q307 152 303 149 Q299 146 298 136Z" transform="rotate(324 240 240)"/>
-          </g>
-
-          <!-- Window cutouts between spokes (dark) -->
-          <g fill="#333">
-            <path d="M298 136 L320 114 L334 128 L312 150 Q307 152 303 149 Q299 146 298 136Z" transform="rotate(18 240 240)"/>
-            <path d="M298 136 L320 114 L334 128 L312 150 Q307 152 303 149 Q299 146 298 136Z" transform="rotate(54 240 240)"/>
-            <path d="M298 136 L320 114 L334 128 L312 150 Q307 152 303 149 Q299 146 298 136Z" transform="rotate(90 240 240)"/>
-            <path d="M298 136 L320 114 L334 128 L312 150 Q307 152 303 149 Q299 146 298 136Z" transform="rotate(126 240 240)"/>
-            <path d="M298 136 L320 114 L334 128 L312 150 Q307 152 303 149 Q299 146 298 136Z" transform="rotate(162 240 240)"/>
-            <path d="M298 136 L320 114 L334 128 L312 150 Q307 152 303 149 Q299 146 298 136Z" transform="rotate(198 240 240)"/>
-            <path d="M298 136 L320 114 L334 128 L312 150 Q307 152 303 149 Q299 146 298 136Z" transform="rotate(234 240 240)"/>
-            <path d="M298 136 L320 114 L334 128 L312 150 Q307 152 303 149 Q299 146 298 136Z" transform="rotate(270 240 240)"/>
-            <path d="M298 136 L320 114 L334 128 L312 150 Q307 152 303 149 Q299 146 298 136Z" transform="rotate(306 240 240)"/>
-            <path d="M298 136 L320 114 L334 128 L312 150 Q307 152 303 149 Q299 146 298 136Z" transform="rotate(342 240 240)"/>
-          </g>
-
-          <!-- Centre hub ring -->
-          <circle cx="240" cy="240" r="72" fill="#bbb" stroke="#aaa" stroke-width="1"/>
-          <circle cx="240" cy="240" r="68" fill="url(#hubGrad)"/>
-          <!-- Hub bolt circle -->
-          <circle cx="240" cy="240" r="54" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1" stroke-dasharray="4 3"/>
-          <!-- 5 lug bolts -->
-          <circle cx="240" cy="187" r="8" fill="#888" stroke="#aaa" stroke-width="1.5"/>
-          <circle cx="282" cy="214" r="8" fill="#888" stroke="#aaa" stroke-width="1.5"/>
-          <circle cx="266" cy="261" r="8" fill="#888" stroke="#aaa" stroke-width="1.5"/>
-          <circle cx="214" cy="261" r="8" fill="#888" stroke="#aaa" stroke-width="1.5"/>
-          <circle cx="198" cy="214" r="8" fill="#888" stroke="#aaa" stroke-width="1.5"/>
-
-          <!-- Centre cap -->
-          <circle cx="240" cy="240" r="36" fill="#1c1c1c" stroke="#555" stroke-width="2"/>
-          <circle cx="240" cy="240" r="30" fill="#222" stroke="rgba(41,184,212,0.5)" stroke-width="1.5"/>
-          <!-- DAW text in cyan -->
-          <text x="240" y="237" text-anchor="middle" fill="#29b8d4" font-family="'Barlow Condensed'" font-size="11" font-weight="800" letter-spacing="2">DIAMOND</text>
-          <text x="240" y="250" text-anchor="middle" fill="rgba(41,184,212,0.6)" font-family="'Barlow Condensed'" font-size="8" font-weight="600" letter-spacing="3">ALLOYS WALES</text>
-
-          <!-- Rim edge highlight -->
-          <circle cx="240" cy="240" r="202" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="6"/>
-
-          <defs>
-            <radialGradient id="rimGrad" cx="40%" cy="35%" r="65%">
-              <stop offset="0%" stop-color="#888"/>
-              <stop offset="100%" stop-color="#333"/>
-            </radialGradient>
-            <radialGradient id="faceGrad" cx="35%" cy="30%" r="70%">
-              <stop offset="0%" stop-color="rgba(255,255,255,0.25)"/>
-              <stop offset="60%" stop-color="rgba(255,255,255,0)"/>
-              <stop offset="100%" stop-color="rgba(0,0,0,0.35)"/>
-            </radialGradient>
-            <linearGradient id="spokeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#ffffff"/>
-              <stop offset="40%" stop-color="#cccccc"/>
-              <stop offset="100%" stop-color="#999999"/>
-            </linearGradient>
-            <radialGradient id="hubGrad" cx="40%" cy="35%" r="65%">
-              <stop offset="0%" stop-color="#d4d4d4"/>
-              <stop offset="100%" stop-color="#888"/>
-            </radialGradient>
-          </defs>
-        </svg>
+      <div class="hero-widget-wrap">
+        <div class="hero-widget-label">Find Tyres for Your Vehicle</div>
+        <div class="hero-widget-box">
+          <!-- RegToTyre Tyre Lookup Tool -->
+          <div id="tw-widget"></div>
+          <script src="https://regtotyre.co.uk/widget.js"></script>
+          <script>var widget_id = 'ADMIN000000';</script>
+        </div>
       </div>
     </div>
   </section>
