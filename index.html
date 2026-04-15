@@ -172,42 +172,40 @@ nav {
   background: #161616;
   border-top: 3px solid var(--cyan);
   border-bottom: 1px solid rgba(255,255,255,0.05);
-  padding: 0;
+  padding: 3rem;
 }
 .widget-section-inner {
-  display: grid; grid-template-columns: 1fr 1.6fr;
-  align-items: stretch; min-height: 180px;
+  max-width: 700px; margin: 0 auto;
 }
 .widget-section-text {
-  padding: 2.5rem 3rem;
-  background: var(--nav);
-  display: flex; flex-direction: column; justify-content: center;
-  border-right: 1px solid rgba(255,255,255,0.06);
+  text-align: center; margin-bottom: 1.5rem;
 }
 .widget-section-text h2 {
-  font-family: var(--fd); font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  font-family: var(--fd); font-size: clamp(1.8rem, 3vw, 2.6rem);
   font-weight: 800; text-transform: uppercase; letter-spacing: 0.03em;
   color: var(--white); line-height: 1; margin-bottom: 0.5rem;
 }
 .widget-section-text h2 span { color: var(--cyan); }
 .widget-section-text p {
-  font-size: 0.88rem; color: var(--muted); line-height: 1.6; max-width: 280px;
+  font-size: 0.9rem; color: var(--muted); line-height: 1.6;
 }
 .widget-section-widget {
   background: #fff;
-  padding: 0;
-  display: flex; flex-direction: column;
+  border-top: 3px solid var(--cyan);
+  overflow: hidden;
 }
-/* Cyan theme overrides for widget */
-#tw-widget .tw-wrap { background: transparent !important; border: none !important; padding: 0 !important; box-shadow: none !important; max-width: 100% !important; }
+/* Override widget colours to match site */
+#tw-widget .tw-wrap { background: transparent !important; border: none !important; box-shadow: none !important; max-width: 100% !important; }
 #tw-widget .tw-title, #tw-widget .tw-title * { color: #29b8d4 !important; }
+#tw-widget [class*="selected"], #tw-widget [class*="active"] { border-color: #29b8d4 !important; color: #29b8d4 !important; }
+#tw-widget .tw-tab-selected, #tw-widget .tw-tab-active { border-color: #29b8d4 !important; }
 #tw-widget .tw-input { border-color: rgba(0,0,0,0.15) !important; border-radius: 2px !important; }
 #tw-widget .tw-input:focus { border-color: #29b8d4 !important; outline: none !important; }
-#tw-widget .tw-btn { background: #29b8d4 !important; color: #fff !important; font-weight: 700 !important; border-radius: 2px !important; }
+#tw-widget .tw-btn, #tw-widget button[type="submit"], #tw-widget .tw-lookup-btn { background: #29b8d4 !important; color: #fff !important; font-weight: 700 !important; border-radius: 2px !important; border: none !important; }
 #tw-widget .tw-btn:hover { background: #1e92a8 !important; }
 #tw-widget .tw-tyre-label { color: #29b8d4 !important; }
 #tw-widget .tw-enquiry-btn { background: #29b8d4 !important; color: #fff !important; border-radius: 2px !important; }
-#tw-widget .tw-powered a { color: #29b8d4 !important; }
+#tw-widget .tw-powered a { color: #aaa !important; }
 
 /* ── STATS BAR ── */
 .stats-bar {
@@ -374,8 +372,7 @@ footer { background: var(--topbar); border-top: 2px solid rgba(41,184,212,0.3); 
   .hero { grid-template-columns: 1fr; min-height: auto; }
   .hero-right { display: none; }
   .hero-left { padding: 3rem 1.5rem; }
-  .widget-section-inner { grid-template-columns: 1fr; }
-  .widget-section-text { padding: 1.5rem; }
+  .widget-section { padding: 2rem 1.5rem; }
   .widget-section-text p { max-width: 100%; }
   .stats-bar { grid-template-columns: repeat(2,1fr); }
   .dual-focus { grid-template-columns: 1fr; }
@@ -518,7 +515,7 @@ footer { background: var(--topbar); border-top: 2px solid rgba(41,184,212,0.3); 
   <div class="widget-section">
     <div class="widget-section-inner">
       <div class="widget-section-text">
-        <h2>FIND TYRES FOR<br><span>YOUR VEHICLE</span></h2>
+        <h2>FIND TYRES FOR <span>YOUR VEHICLE</span></h2>
         <p>Enter your reg plate to instantly find the right tyres — budget to premium, all fitted at our Llanelli workshop.</p>
       </div>
       <div class="widget-section-widget">
