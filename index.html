@@ -94,18 +94,18 @@ nav {
 
 /* ── HERO ── */
 .hero {
-  min-height: calc(100vh - 100px);
   background: var(--dark);
   display: grid; grid-template-columns: 1fr 1fr;
   align-items: center; position: relative; overflow: hidden;
+  min-height: 420px;
 }
 .hero::before {
   content: '';
   position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-  background: radial-gradient(ellipse 55% 70% at 70% 50%, rgba(41,184,212,0.07) 0%, transparent 70%);
+  background: radial-gradient(ellipse 55% 70% at 30% 50%, rgba(41,184,212,0.07) 0%, transparent 70%);
   pointer-events: none;
 }
-.hero-left { padding: 5rem 3rem 5rem 3.5rem; position: relative; z-index: 2; }
+.hero-left { padding: 4rem 3rem 4rem 3.5rem; position: relative; z-index: 2; }
 
 .hero-eyebrow {
   display: inline-flex; align-items: center; gap: 0.6rem;
@@ -148,37 +148,58 @@ nav {
 }
 .btn-ghost:hover { border-color: var(--cyan); color: var(--cyan); }
 
-/* ── HERO RIGHT — widget panel ── */
+/* ── HERO RIGHT — decorative panel ── */
 .hero-right {
-  height: 100%; min-height: 520px;
+  height: 100%; min-height: 420px;
   background: #1a1a1a;
   display: flex; align-items: center; justify-content: center;
   position: relative; overflow: hidden;
-  padding: 2.5rem 2rem;
-  border-left: 1px solid rgba(41,184,212,0.15);
+  border-left: 1px solid rgba(41,184,212,0.12);
 }
 .hero-right::before {
   content: ''; position: absolute; inset: 0;
-  background: radial-gradient(ellipse 80% 80% at 50% 50%, rgba(41,184,212,0.05) 0%, transparent 70%);
+  background: radial-gradient(ellipse 80% 80% at 50% 50%, rgba(41,184,212,0.07) 0%, transparent 70%);
   pointer-events: none;
 }
-.hero-widget-wrap {
+.hero-wheel-deco {
   position: relative; z-index: 2;
-  width: 100%; max-width: 480px;
+  width: clamp(240px, 30vw, 380px); height: clamp(240px, 30vw, 380px);
 }
-.hero-widget-label {
-  font-family: var(--fd); font-size: 0.72rem; font-weight: 700;
-  letter-spacing: 0.22em; text-transform: uppercase; color: var(--cyan);
-  margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;
-}
-.hero-widget-label::before { content: ''; width: 1rem; height: 2px; background: var(--cyan); }
-.hero-widget-box {
-  background: #fff;
+.hero-wheel-deco svg { width: 100%; height: 100%; filter: drop-shadow(0 0 30px rgba(41,184,212,0.1)); }
+
+/* ── WIDGET SECTION ── */
+.widget-section {
+  background: #161616;
   border-top: 3px solid var(--cyan);
-  overflow: hidden;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  padding: 0;
 }
-/* Theme the widget internals to match site */
-#tw-widget .tw-wrap { background: transparent !important; border: none !important; padding: 0 !important; box-shadow: none !important; }
+.widget-section-inner {
+  display: grid; grid-template-columns: 1fr 1.6fr;
+  align-items: stretch; min-height: 180px;
+}
+.widget-section-text {
+  padding: 2.5rem 3rem;
+  background: var(--nav);
+  display: flex; flex-direction: column; justify-content: center;
+  border-right: 1px solid rgba(255,255,255,0.06);
+}
+.widget-section-text h2 {
+  font-family: var(--fd); font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  font-weight: 800; text-transform: uppercase; letter-spacing: 0.03em;
+  color: var(--white); line-height: 1; margin-bottom: 0.5rem;
+}
+.widget-section-text h2 span { color: var(--cyan); }
+.widget-section-text p {
+  font-size: 0.88rem; color: var(--muted); line-height: 1.6; max-width: 280px;
+}
+.widget-section-widget {
+  background: #fff;
+  padding: 0;
+  display: flex; flex-direction: column;
+}
+/* Cyan theme overrides for widget */
+#tw-widget .tw-wrap { background: transparent !important; border: none !important; padding: 0 !important; box-shadow: none !important; max-width: 100% !important; }
 #tw-widget .tw-title, #tw-widget .tw-title * { color: #29b8d4 !important; }
 #tw-widget .tw-input { border-color: rgba(0,0,0,0.15) !important; border-radius: 2px !important; }
 #tw-widget .tw-input:focus { border-color: #29b8d4 !important; outline: none !important; }
@@ -350,9 +371,12 @@ footer { background: var(--topbar); border-top: 2px solid rgba(41,184,212,0.3); 
   .nav-links.open { display: flex; flex-direction: column; position: fixed; top: 62px; left: 0; right: 0; background: var(--nav); padding: 1.5rem; gap: 0; border-top: 1px solid rgba(41,184,212,0.2); height: auto; z-index: 300; }
   .nav-links.open li { border-bottom: 1px solid rgba(255,255,255,0.05); }
   .nav-links.open a { padding: 0.9rem 0; height: auto; border-bottom: none; margin-bottom: 0; }
-  .hero { grid-template-columns: 1fr; }
+  .hero { grid-template-columns: 1fr; min-height: auto; }
   .hero-right { display: none; }
-  .hero-left { padding: 4rem 1.5rem 3rem; }
+  .hero-left { padding: 3rem 1.5rem; }
+  .widget-section-inner { grid-template-columns: 1fr; }
+  .widget-section-text { padding: 1.5rem; }
+  .widget-section-text p { max-width: 100%; }
   .stats-bar { grid-template-columns: repeat(2,1fr); }
   .dual-focus { grid-template-columns: 1fr; }
   .services-grid { grid-template-columns: 1fr 1fr; }
@@ -434,14 +458,50 @@ footer { background: var(--topbar); border-top: 2px solid rgba(41,184,212,0.3); 
       </div>
     </div>
     <div class="hero-right">
-      <div class="hero-widget-wrap">
-        <div class="hero-widget-label">Find Tyres for Your Vehicle</div>
-        <div class="hero-widget-box">
-          <!-- RegToTyre Tyre Lookup Tool -->
-          <div id="tw-widget"></div>
-          <script src="https://regtotyre.co.uk/widget.js"></script>
-          <script>var widget_id = 'ADMIN000000';</script>
-        </div>
+      <div class="hero-wheel-deco">
+        <svg viewBox="0 0 380 380" xmlns="http://www.w3.org/2000/svg" fill="none">
+          <circle cx="190" cy="190" r="183" fill="#111" stroke="#222" stroke-width="2"/>
+          <circle cx="190" cy="190" r="162" fill="#1a1a1a"/>
+          <circle cx="190" cy="190" r="156" fill="#d0d0d0"/>
+          <circle cx="190" cy="190" r="156" fill="url(#hfg)"/>
+          <g fill="url(#hsg)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5">
+            <path d="M184 62 L182 38 L198 38 L196 62 Q192 66 190 66 Q188 66 184 62Z"/>
+            <path d="M184 62 L182 38 L198 38 L196 62 Q192 66 190 66 Q188 66 184 62Z" transform="rotate(40 190 190)"/>
+            <path d="M184 62 L182 38 L198 38 L196 62 Q192 66 190 66 Q188 66 184 62Z" transform="rotate(80 190 190)"/>
+            <path d="M184 62 L182 38 L198 38 L196 62 Q192 66 190 66 Q188 66 184 62Z" transform="rotate(120 190 190)"/>
+            <path d="M184 62 L182 38 L198 38 L196 62 Q192 66 190 66 Q188 66 184 62Z" transform="rotate(160 190 190)"/>
+            <path d="M184 62 L182 38 L198 38 L196 62 Q192 66 190 66 Q188 66 184 62Z" transform="rotate(200 190 190)"/>
+            <path d="M184 62 L182 38 L198 38 L196 62 Q192 66 190 66 Q188 66 184 62Z" transform="rotate(240 190 190)"/>
+            <path d="M184 62 L182 38 L198 38 L196 62 Q192 66 190 66 Q188 66 184 62Z" transform="rotate(280 190 190)"/>
+            <path d="M184 62 L182 38 L198 38 L196 62 Q192 66 190 66 Q188 66 184 62Z" transform="rotate(320 190 190)"/>
+          </g>
+          <circle cx="190" cy="190" r="58" fill="#bbb" stroke="#aaa" stroke-width="1"/>
+          <circle cx="190" cy="190" r="54" fill="url(#hhg)"/>
+          <circle cx="190" cy="148" r="7" fill="#888" stroke="#aaa" stroke-width="1.2"/>
+          <circle cx="224" cy="169" r="7" fill="#888" stroke="#aaa" stroke-width="1.2"/>
+          <circle cx="211" cy="208" r="7" fill="#888" stroke="#aaa" stroke-width="1.2"/>
+          <circle cx="169" cy="208" r="7" fill="#888" stroke="#aaa" stroke-width="1.2"/>
+          <circle cx="156" cy="169" r="7" fill="#888" stroke="#aaa" stroke-width="1.2"/>
+          <circle cx="190" cy="190" r="28" fill="#1c1c1c" stroke="rgba(41,184,212,0.6)" stroke-width="1.5"/>
+          <text x="190" y="187" text-anchor="middle" fill="#29b8d4" font-family="'Barlow Condensed'" font-size="9" font-weight="800" letter-spacing="1.5">DIAMOND</text>
+          <text x="190" y="198" text-anchor="middle" fill="rgba(41,184,212,0.55)" font-family="'Barlow Condensed'" font-size="6.5" font-weight="600" letter-spacing="2">ALLOYS WALES</text>
+          <defs>
+            <radialGradient id="hfg" cx="35%" cy="30%" r="70%">
+              <stop offset="0%" stop-color="rgba(255,255,255,0.28)"/>
+              <stop offset="60%" stop-color="rgba(255,255,255,0)"/>
+              <stop offset="100%" stop-color="rgba(0,0,0,0.32)"/>
+            </radialGradient>
+            <linearGradient id="hsg" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ffffff"/>
+              <stop offset="45%" stop-color="#cccccc"/>
+              <stop offset="100%" stop-color="#999999"/>
+            </linearGradient>
+            <radialGradient id="hhg" cx="40%" cy="35%" r="65%">
+              <stop offset="0%" stop-color="#d8d8d8"/>
+              <stop offset="100%" stop-color="#888"/>
+            </radialGradient>
+          </defs>
+        </svg>
       </div>
     </div>
   </section>
@@ -452,6 +512,22 @@ footer { background: var(--topbar); border-top: 2px solid rgba(41,184,212,0.3); 
     <div class="stat-item"><div class="stat-num">9</div><div class="stat-lbl">Specialist Services</div></div>
     <div class="stat-item"><div class="stat-num">100%</div><div class="stat-lbl">Satisfaction Guarantee</div></div>
     <div class="stat-item"><div class="stat-num">1</div><div class="stat-lbl">Call Away — Llanelli</div></div>
+  </div>
+
+  <!-- WIDGET STRIP -->
+  <div class="widget-section">
+    <div class="widget-section-inner">
+      <div class="widget-section-text">
+        <h2>FIND TYRES FOR<br><span>YOUR VEHICLE</span></h2>
+        <p>Enter your reg plate to instantly find the right tyres — budget to premium, all fitted at our Llanelli workshop.</p>
+      </div>
+      <div class="widget-section-widget">
+        <!-- RegToTyre Tyre Lookup Tool -->
+        <div id="tw-widget"></div>
+        <script src="https://regtotyre.co.uk/widget.js"></script>
+        <script>var widget_id = 'ADMIN000000';</script>
+      </div>
+    </div>
   </div>
 </div>
 
