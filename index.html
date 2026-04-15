@@ -174,7 +174,7 @@ nav {
   padding: 3rem;
 }
 .widget-section-inner {
-  max-width: 700px; margin: 0 auto;
+  max-width: 960px; margin: 0 auto;
 }
 .widget-section-text {
   text-align: center; margin-bottom: 1.5rem;
@@ -192,6 +192,13 @@ nav {
   background: #fff;
   border-top: 3px solid var(--cyan);
   overflow: hidden;
+  width: 100%;
+}
+.widget-section-widget #tw-widget,
+.widget-section-widget #tw-widget > * {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box;
 }
 /* Widget colours are controlled via the RegToTyre dashboard */
 
